@@ -1,0 +1,142 @@
+:root {
+    --bg-color: #1e1e1e;
+    --display-bg: #2a2a2a;
+    --btn-color: #3b3b3b;
+    --btn-hover: #4d4d4d;
+    --operator-color: #ff9500;
+    --operator-hover: #ffaa33;
+    --equals-color: #ff9500;
+    --equals-hover: #ffaa33;
+    --clear-color: #a5a5a5;
+    --clear-hover: #b5b5b5;
+    --text-color: #ffffff;
+    --text-secondary: #b5b5b5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.calculator {
+    width: 320px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.display {
+    background: var(--display-bg);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.previous-operand {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 24px;
+}
+
+.current-operand {
+    color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.2s;
+    color: var(--text-color);
+    background: var(--btn-color);
+    font-weight: 400;
+}
+
+button:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.operator {
+    background: var(--operator-color);
+    font-weight: 500;
+}
+
+.operator:hover {
+    background: var(--operator-hover);
+}
+
+.equals {
+    background: var(--equals-color);
+    grid-column: span 1;
+}
+
+.equals:hover {
+    background: var(--equals-hover);
+}
+
+[data-action="clear"],
+[data-action="delete"],
+[data-action="percent"] {
+    background: var(--clear-color);
+    color: #000;
+}
+
+[data-action="clear"]:hover,
+[data-action="delete"]:hover,
+[data-action="percent"]:hover {
+    background: var(--clear-hover);
+}
+
+[data-action="number"]:last-child {
+    grid-column: span 2;
+}
+
+/* Responsive design */
+@media (max-width: 400px) {
+    .calculator {
+        width: 90%;
+        padding: 15px;
+    }
+    
+    button {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+}
